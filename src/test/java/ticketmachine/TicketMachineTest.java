@@ -83,6 +83,7 @@ public class TicketMachineTest {
         public void montantNeg(){
             try{
             machine.insertMoney(-machine.getPrice());
+            //fail();
             }
             catch (IllegalArgumentException e){
                 System.out.println("on peut entrer un montant negatif");
@@ -94,8 +95,8 @@ public class TicketMachineTest {
         public void PrixNeg(){
            try{
             TicketMachine machine2;
-            machine2 = new TicketMachine(-PRICE);
-            fail();
+            machine2 = new TicketMachine(-1);
+            //fail();
            }
            catch (IllegalArgumentException e){
               System.out.println("on peut creer une machine avec un prix negatif");
