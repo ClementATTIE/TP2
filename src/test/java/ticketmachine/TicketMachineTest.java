@@ -35,7 +35,6 @@ public class TicketMachineTest {
         // S3 : on imprime pas le ticket si le montant inseré est insufisant
         public void notPrint(){
             assertEquals("la machine imprime le ticket meme quand le solde est insufisant",machine.printTicket(),false);
-            
         }
         
         @Test
@@ -61,8 +60,9 @@ public class TicketMachineTest {
             machine.printTicket();
                 assertEquals("Le montant collecté ne change pas quand on imprime le ticket",machine.getTotal(), machine.getPrice());
         }
+        
         @Test
-        //S7 : 
+        //S7 : rend correctement la monnaie
         public void refundDone(){
             machine.insertMoney(machine.getPrice()+50);
             machine.printTicket();
@@ -72,14 +72,14 @@ public class TicketMachineTest {
         
         
         @Test
-        //S8 : 
+        //S8 : remet la balance à zéro
         public void resetBalance(){
             machine.refund();
             assertEquals("ne remet pas la balance a zéro après un remboursement", machine.getBalance(),0);
         }
 
         @Test
-        //S9 : 
+        //S9 : on ne peut pas insérer un montant négatif
         public void montantNeg(){
             try{
             machine.insertMoney(-machine.getPrice());
@@ -90,7 +90,7 @@ public class TicketMachineTest {
         }   
 
         @Test
-        //S10 : 
+        //S10 : on ne peut pas créer de machine qui délivre des tickets dont le prix est négatif
         public void PrixNeg(){
            try{
             TicketMachine machine2;
@@ -99,7 +99,6 @@ public class TicketMachineTest {
            }
            catch (IllegalArgumentException e){
               System.out.println("on peut creer une machine avec un prix negatif");
-            }
-            
+            }    
         }
 }
